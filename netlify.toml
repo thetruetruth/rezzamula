@@ -1,5 +1,5 @@
-[[redirects]]
-from = "/*"
-to = "https://trends.rezzamula.com/:splat"
-status = 301
-force = true
+[[headers]]
+  for = "/*.(js|jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|webp|mp3|mp4|ogg|ogv|webm|htc|css|ttf|ttc|otf|eot|woff|woff2|webmanifest)"
+[headers.values]
+  Cache-Control = "public, max-age=31536000, s-maxage=31536000, immutable"
+  Access-Control-Allow-Origin = "*"
