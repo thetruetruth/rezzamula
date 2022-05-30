@@ -1,0 +1,73 @@
+{{ define "title" }}{{ .Title | title }} &ndash; {{ .Site.Title }}{{ end }}
+{{ define "head" }}{{- with $.Params.images }}<link rel="preload" as="image" href="https://i0.wp.com/cdn.rezzamula.com/i/{{ index . 0 }}?w=751">{{ end }}{{ end }}
+{{ define "main" }}
+<q-page padding>
+  <article class="text-body1" style="word-wrap: break-word;">
+    <header>
+      {{- with $.Params.images }}
+      <figure class="q-layout-no-padding q-layout-no-padding-top q-my-none">
+        <q-img no-spinner loading="eager" src="https://i0.wp.com/cdn.rezzamula.com/i/{{ index . 0 }}?w=751" alt="{{$.Title}}"></q-img>
+        <figcaption class="q-layout-padding q-pt-none text-body2">{{$.Params.caption | markdownify}}</figcaption>
+      </figure>
+      {{ end -}}
+      <h1>{{.Title | title}}</h1>
+      <p>{{.Params.description}}</p>
+      <q-card flat bordered class="q-mb-md">
+        <q-item>
+          <q-item-section>
+            <q-item-label>
+              
+        {{ range .Params.authors}}
+        {{- with $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize .)) }}
+        <q-chip :ripple="false">
+          {{ if .Params.avatar }}<q-avatar>
+            <img src="https://i0.wp.com/cdn.rezzamula.com/i/{{ .Params.avatar }}">
+          </q-avatar>{{end}}
+          <a href="{{ .Permalink }}">{{ .Params.title | title}}</a>
+        </q-chip>
+        {{ end }}
+        {{ end }}
+            </q-item-label>
+            <q-item-label class="q-gutter-xs">
+              <q-btn round flat aria-label="share facebook" target="_blank" rel="noopener nofollow" href="https://www.facebook.com/sharer.php?u={{.Permalink}}">
+                <q-avatar size="42px">
+                  <img src="https://i0.wp.com/cdn.rezzamula.com/i/GuE5CKU.png?resize=42,42">
+                </q-avatar>
+              </q-btn>
+              <q-btn round flat aria-label="share twitter" target="_blank" rel="noopener nofollow" href="https://twitter.com/share?url={{.Permalink}}&text={{.Title|title}}">
+                <q-avatar size="42px">
+                  <img src="https://i0.wp.com/cdn.rezzamula.com/i/8iCfOjr.png?resize=42,42">
+                </q-avatar>
+              </q-btn>
+              <q-btn round flat aria-label="share linkedin" target="_blank" rel="noopener nofollow" href="https://www.linkedin.com/sharing/share-offsite/?url={{.Permalink}}">
+                <q-avatar size="42px">
+                  <img src="https://i0.wp.com/cdn.rezzamula.com/i/0NuLnmz.png?resize=42,42">
+                </q-avatar>
+              </q-btn>
+              <q-btn round flat aria-label="share whatsapp" target="_blank" rel="noopener nofollow" href="https://api.whatsapp.com/send?text={{.Permalink}}">
+                <q-avatar size="42px">
+                  <img src="https://i0.wp.com/cdn.rezzamula.com/i/ktrKclr.png?resize=42,42">
+                </q-avatar>
+              </q-btn>
+            </q-item-label>
+          </q-item-section>
+  
+          <q-item-section side top>
+            <q-item-label caption><time class="op-modified timeago" dateTime="{{.Lastmod.Format "2006-01-02T15:04:05Z0700"}}">{{ .Lastmod.Format "02 Jan 2006" }}</time></q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-chip>
+    </q-card>
+    </header>
+  {{ .Content }}
+  </article>
+</q-page>
+{{ end }}
+
+
+{{ define "sidebar"}}
+<q-drawer show-if-above v-model="rightDrawer" side="right">
+  <q-scroll-area class="fit">
+  </q-scroll-area>
+</q-drawer>
+{{ end }}

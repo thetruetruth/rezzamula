@@ -1,5 +1,41 @@
-{{ define "title" }}{{ .Title }} &ndash; {{ .Site.Title }}
-{{ end }}
+{{ define "title" }}{{ .Title }} &ndash; {{ .Site.Title }}{{ end }}
+
 {{ define "main" }}
-{{.Content}}
+<q-page padding>
+  <h1 class="h5">The main</h1>
+  <q-list  separator class="q-mb-lg">
+    {{ range first 15 ( where .Site.RegularPages "Type" "news" ) }}
+    <q-item tag="a" clickable v-ripple href="{{.Permalink}}">
+      <q-item-section>
+        <h2 class="h6" style="margin-bottom: 0;">{{ .Title }}</h2>
+        <div class="text-caption"><time class="op-modified timeago" dateTime="{{.Lastmod.Format "2006-01-02T15:04:05Z0700"}}">{{ .Lastmod.Format "02 Jan 2006" }}</time></div>
+      </q-item-section>
+    </q-item>
+    {{ end }}
+  </q-list>
+  {{ range after 15 ( where .Site.RegularPages "Type" "news" ) }}
+  <q-card flat bordered tag="article" class="q-mb-md" >
+    <q-card-section horizontal>
+      <q-card-section {{ if .Params.images}}class="full-width"{{end}}>
+        <h2 class="h5" style="margin-bottom: 0;"><a href="{{.Permalink}}">{{ .Title }}</a></h2>
+        <p class="q-mb-none gt-sm">{{.Params.description}}</p>
+      </q-card-section>
+      {{ if .Params.images}}
+      <q-card-section class="flex items-start q-pl-none" tag="a" href="{{.Permalink}}" style="width:100px">
+        {{ range first 1 .Params.images }}
+        <q-img no-spinner ratio="1" class="rounded-borders" src="https://i0.wp.com/cdn.rezzamula.com/i/{{ . }}?resize=100,100" alt></q-img>
+        {{ end }}
+      </q-card-section>
+      {{ end }}
+    </q-card-section>
+  </q-card>
+  {{ end }}
+</q-page>
+{{ end }}
+
+{{ define "sidebar"}}
+<q-drawer show-if-above v-model="rightDrawer" side="right">
+  <q-scroll-area class="fit">
+  </q-scroll-area>
+</q-drawer>
 {{ end }}

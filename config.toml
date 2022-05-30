@@ -1,3 +1,14 @@
-baseURL = 'https://apostle.rezzamula.com/'
+baseURL = 'https://rezzamula.com/'
 languageCode = 'en-us'
-title = 'Apostle'
+title = 'RezzaMula'
+disableHugoGeneratorInject = true
+disableKinds = ["taxonomyTerm"]
+enableRobotsTXT = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[taxonomies]
+  author = "authors"

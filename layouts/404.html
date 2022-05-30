@@ -1,0 +1,22 @@
+{{ define "title" }}{{ .Title }} &ndash; {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<q-page class="flex flex-center text-center">
+    <div> 
+        <div class="err404__hero flex flex-center no-wrap q-gutter-sm text-brand-primary" style="font-size: 150px;">
+            <div>4</div>
+            <img src="/icons/152.png" alt>
+            <div>4</div>
+        </div>
+        <h1 class="h2">We are unable to find the page you are looking for</h1>
+        <p class="h4">Please check the URL or go to our Homepage</p>
+        <q-btn push label="Homepage" no-caps color="white" :text-color="$q.dark.isActive ? 'primary' : 'primary'"></q-btn>
+    </div>
+</q-page>
+{{ end }}
+
+
+{{ define "sidebar"}}
+<q-drawer show-if-above v-model="rightDrawer" side="right">
+</q-drawer>
+{{ end }}

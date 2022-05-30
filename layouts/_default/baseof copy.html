@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+    <style>@font-face{font-family:Inter;font-style:normal;font-weight:100;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-Thin.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-Thin.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:italic;font-weight:100;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-ThinItalic.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-ThinItalic.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:normal;font-weight:200;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-ExtraLight.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-ExtraLight.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:italic;font-weight:200;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-ExtraLightItalic.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-ExtraLightItalic.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:normal;font-weight:300;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-Light.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-Light.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:italic;font-weight:300;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-LightItalic.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-LightItalic.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:normal;font-weight:400;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-Regular.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-Regular.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:italic;font-weight:400;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-Italic.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-Italic.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:normal;font-weight:500;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-Medium.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-Medium.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:italic;font-weight:500;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-MediumItalic.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-MediumItalic.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:normal;font-weight:600;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-SemiBold.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-SemiBold.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:italic;font-weight:600;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-SemiBoldItalic.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-SemiBoldItalic.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:normal;font-weight:700;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-Bold.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-Bold.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:italic;font-weight:700;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-BoldItalic.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-BoldItalic.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:normal;font-weight:800;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-ExtraBold.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-ExtraBold.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:italic;font-weight:800;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-ExtraBoldItalic.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-ExtraBoldItalic.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:normal;font-weight:900;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-Black.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-Black.woff?v=3.19") format("woff")}@font-face{font-family:Inter;font-style:italic;font-weight:900;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-BlackItalic.woff2?v=3.19") format("woff2"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-BlackItalic.woff?v=3.19") format("woff")}@font-face{font-family:"Inter var";font-weight:100 900;font-style:normal;font-named-instance:Regular;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-roman.var.woff2?v=3.19") format("woff2 supports variations(gvar)"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-roman.var.woff2?v=3.19") format("woff2-variations"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-roman.var.woff2?v=3.19") format("woff2")}@font-face{font-family:"Inter var";font-weight:100 900;font-style:italic;font-named-instance:Italic;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-italic.var.woff2?v=3.19") format("woff2 supports variations(gvar)"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-italic.var.woff2?v=3.19") format("woff2-variations"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter-italic.var.woff2?v=3.19") format("woff2")}@font-face{font-family:"Inter var experimental";font-weight:100 900;font-style:oblique 0deg 10deg;font-display:swap;src:url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter.var.woff2?v=3.19") format("woff2-variations"),url("https://cdn.jsdelivr.net/npm/inter-ui@3.19.3/Inter (web)/Inter.var.woff2?v=3.19") format("woff2")}</style>
+    <link rel="stylesheet" href="/css/vendor.min.css">
+    <link id="theme-toggle" rel="stylesheet" href="/css/style.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/combine/npm/tiny-slider@2.9.1,npm/overlayscrollbars@1.13.1,npm/choices.js@9.0.1,npm/glightbox@3.2.0,npm/flatpickr@4.6.9,npm/plyr@3.7.2,npm/dropzone@5.9.3"></script>
+    <script>window.addEventListener('DOMContentLoaded', (event) => {"use strict";window.Element.prototype.removeClass=function(){let e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:"",t=this;return t instanceof HTMLElement||null===t||(t=document.querySelector(t)),this.isVariableDefined(t)&&e&&t.classList.remove(e),this},window.Element.prototype.addClass=function(){let e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:"",t=this;return t instanceof HTMLElement||null===t||(t=document.querySelector(t)),this.isVariableDefined(t)&&e&&t.classList.add(e),this},window.Element.prototype.toggleClass=function(){let e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:"",t=this;return t instanceof HTMLElement||null===t||(t=document.querySelector(t)),this.isVariableDefined(t)&&e&&t.classList.toggle(e),this},window.Element.prototype.isVariableDefined=function(){return!!this&&void 0!==this&&null!=this};var e={init:function(){e.preLoader(),e.navbarDropdownHover(),e.tinySlider(),e.toolTipFunc(),e.popOverFunc(),e.videoPlyr(),e.lightBox(),e.darkMode(),e.sidebarToggleStart(),e.sidebarToggleEnd(),e.choicesSelect(),e.autoResize(),e.DropZone(),e.flatPicker(),e.avatarImg(),e.customScrollbar(),e.toasts(),e.pswMeter(),e.fakePwd()},isVariableDefined:function(e){return typeof!!e&&"undefined"!=e&&null!=e},getParents:function(t,a,o){const i=[],r=t.matches||t.webkitMatchesSelector||t.mozMatchesSelector||t.msMatchesSelector;for(t=t.parentElement;t&&!r.call(t,a);){if(o)r.call(t,o)&&i.push(t);else if(a){if(r.call(t,a))return i.push(t)}else i.push(t);if(t=t.parentElement,e.isVariableDefined(t)&&r.call(t,a))return t}return i},getNextSiblings:function(e,t,a){let o=[],i=e.parentNode.firstChild;const r=e.matches||e.webkitMatchesSelector||e.mozMatchesSelector||e.msMatchesSelector;do{if(3!==i.nodeType&&i!==e&&i===e.nextElementSibling&&(!a||a(e))){if(t){if(r.call(i,t))return i}else o.push(i);e=i}}while(i=i.nextSibling);return o},on:function(e,t,a){document.addEventListener("DOMContentLoaded",()=>{e instanceof HTMLElement||null===e||(e=document.querySelector(e)),e.addEventListener(t,a)})},onAll:function(e,a,o){document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(e).forEach(t=>{if(-1<a.indexOf(",")){let e=a.split(",");e.forEach(e=>{t.addEventListener(e,o)})}else t.addEventListener(a,o)})})},removeClass:function(t,a){t instanceof HTMLElement||null===t||(t=document.querySelector(t)),e.isVariableDefined(t)&&t.removeClass(a)},removeAllClass:function(t,a){e.isVariableDefined(t)&&t instanceof HTMLElement&&document.querySelectorAll(t).forEach(e=>{e.removeClass(a)})},toggleClass:function(t,a){t instanceof HTMLElement||null===t||(t=document.querySelector(t)),e.isVariableDefined(t)&&t.toggleClass(a)},toggleAllClass:function(t,a){e.isVariableDefined(t)&&t instanceof HTMLElement&&document.querySelectorAll(t).forEach(e=>{e.toggleClass(a)})},addClass:function(t,a){t instanceof HTMLElement||null===t||(t=document.querySelector(t)),e.isVariableDefined(t)&&t.addClass(a)},select:function(e){return document.querySelector(e)},selectAll:function(e){return document.querySelectorAll(e)},preLoader:function(){window.onload=function(){var t=e.select(".preloader");e.isVariableDefined(t)&&(t.className+=" animate__animated animate__fadeOut",setTimeout(function(){t.style.display="none"},200))}},navbarDropdownHover:function(){e.onAll(".dropdown-menu a.dropdown-item.dropdown-toggle","click",function(t){var a=this;if(t.preventDefault(),t.stopImmediatePropagation(),e.isVariableDefined(a.nextElementSibling)&&!a.nextElementSibling.classList.contains("show")){const t=e.getParents(a,".dropdown-menu");e.removeClass(t.querySelector(".show"),"show"),e.isVariableDefined(t.querySelector(".dropdown-opened"))&&e.removeClass(t.querySelector(".dropdown-opened"),"dropdown-opened")}t=e.getNextSiblings(a,".dropdown-menu");e.toggleClass(t,"show"),t.previousElementSibling.toggleClass("dropdown-opened");t=e.getParents(a,"li.nav-item.dropdown.show");e.isVariableDefined(t)&&0<t.length&&e.on(t,"hidden.bs.dropdown",function(t){e.removeAllClass(".dropdown-submenu .show")})})},tinySlider:function(){var t=e.select(".tiny-slider-inner");e.isVariableDefined(t)&&e.selectAll(".tiny-slider-inner").forEach(t=>{var a,o=t,i=o.getAttribute("data-mode")?o.getAttribute("data-mode"):"carousel",r=o.getAttribute("data-axis")?o.getAttribute("data-axis"):"horizontal",n=o.getAttribute("data-gutter")?o.getAttribute("data-gutter"):30,l=o.getAttribute("data-edge")?o.getAttribute("data-edge"):0,s=o.getAttribute("data-items")?o.getAttribute("data-items"):4,d=o.getAttribute("data-items-xl")?o.getAttribute("data-items-xl"):Number(s),c=o.getAttribute("data-items-lg")?o.getAttribute("data-items-lg"):Number(d),u=o.getAttribute("data-items-md")?o.getAttribute("data-items-md"):Number(c),m=o.getAttribute("data-items-sm")?o.getAttribute("data-items-sm"):Number(u),g=o.getAttribute("data-items-xs")?o.getAttribute("data-items-xs"):Number(m),f=o.getAttribute("data-speed")?o.getAttribute("data-speed"):500,p="true"===o.getAttribute("data-autowidth"),b="false"!==o.getAttribute("data-arrow"),h="false"!==o.getAttribute("data-dots"),v="false"!==o.getAttribute("data-autoplay"),w=o.getAttribute("data-autoplaytime")?o.getAttribute("data-autoplaytime"):4e3,y="true"===o.getAttribute("data-hoverpause");e.isVariableDefined(e.select(".custom-thumb"))&&(a=e.select(".custom-thumb"));var A,E="false"!==o.getAttribute("data-loop"),D="true"===o.getAttribute("data-rewind"),S="true"===o.getAttribute("data-autoheight"),L="true"===o.getAttribute("data-fixedwidth"),V="false"!==o.getAttribute("data-touch"),o="false"!==o.getAttribute("data-drag");"rtl"===document.getElementsByTagName("html")[0].getAttribute("dir")&&(A="rtl");tns({container:t,mode:i,axis:r,gutter:n,edgePadding:l,speed:f,autoWidth:p,controls:b,nav:h,autoplay:v,autoplayTimeout:w,autoplayHoverPause:y,autoplayButton:!1,autoplayButtonOutput:!1,controlsPosition:top,navContainer:a,navPosition:top,autoplayPosition:top,controlsText:['<i class="fa-solid fa-chevron-left"></i>','<i class="fa-solid fa-chevron-right"></i>'],loop:E,rewind:D,autoHeight:S,fixedWidth:L,touch:V,mouseDrag:o,arrowKeys:!0,items:s,textDirection:A,lazyload:!0,lazyloadSelector:".lazy",responsive:{0:{items:Number(g)},576:{items:Number(m)},768:{items:Number(u)},992:{items:Number(c)},1200:{items:Number(d)}}})})},toolTipFunc:function(){[].slice.call(e.selectAll('[data-bs-toggle="tooltip"]')).map(function(e){return new bootstrap.Tooltip(e)})},popOverFunc:function(){[].slice.call(e.selectAll('[data-bs-toggle="popover"]')).map(function(e){return new bootstrap.Popover(e)})},videoPlyr:function(){var t=e.select(".player-wrapper");e.isVariableDefined(t)&&(t=Plyr.setup(".player-youtube",{}),window.player=t,t=Plyr.setup(".player-vimeo",{}),window.player=t,t=Plyr.setup(".player-html",{captions:{active:!0}}),window.player=t,t=Plyr.setup(".player-audio",{}),window.player=t)},lightBox:function(){var t=e.select("[data-glightbox]");e.isVariableDefined(t)&&GLightbox({selector:"*[data-glightbox]",openEffect:"fade",touchFollowAxis:"true",closeEffect:"fade"})},darkMode:function(){var t=localStorage.getItem("data-theme"),a=document.getElementById("theme-toggle"),o=(document.getElementsByTagName("html")[0].getAttribute("dir"),()=>{document.documentElement.setAttribute("data-theme","dark"),a.setAttribute("href","/css/style-dark.min.css"),localStorage.setItem("data-theme","dark")}),i=()=>{document.documentElement.setAttribute("data-theme","light"),a.setAttribute("href","/css/style.min.css"),localStorage.setItem("data-theme","light")};"dark"===t?o():null!=t&&"light"!==t||i();const r=e.select("#darkModeSwitch");e.isVariableDefined(r)&&r.addEventListener("click",()=>{("dark"===localStorage.getItem("data-theme")?i:o)()})},sidebarToggleStart:function(){var t,a=e.select(".sidebar-start-toggle");e.isVariableDefined(a)&&(a=e.select(".sidebar-start-toggle"),t=document.getElementsByTagName("BODY")[0],a.addEventListener("click",function(){t.classList.toggle("sidebar-start-enabled")}))},sidebarToggleEnd:function(){var t,a=e.select(".sidebar-end-toggle");e.isVariableDefined(a)&&(a=e.select(".sidebar-end-toggle"),t=document.getElementsByTagName("BODY")[0],a.addEventListener("click",function(){t.classList.toggle("sidebar-end-enabled")}))},choicesSelect:function(){var t=e.select(".js-choice");e.isVariableDefined(t)&&e.selectAll(".js-choice").forEach(function(e){var t="true"==e.getAttribute("data-remove-item-button"),a="false"!=e.getAttribute("data-placeholder"),o=e.getAttribute("data-placeholder-val")?e.getAttribute("data-placeholder-val"):"Type and hit enter",i=e.getAttribute("data-max-item-count")?e.getAttribute("data-max-item-count"):3,r="false"!=e.getAttribute("data-search-enabled"),n=e.getAttribute("data-position")?e.getAttribute("data-position"):"auto";new Choices(e,{removeItemButton:t,placeholder:a,placeholderValue:o,maxItemCount:i,searchEnabled:r,position:n})})},autoResize:function(){e.selectAll("[data-autoresize]").forEach(function(e){var t=e.offsetHeight-e.clientHeight;e.addEventListener("input",function(e){e.target.style.height="auto",e.target.style.height=e.target.scrollHeight+t+"px"})})},DropZone:function(){e.isVariableDefined(e.select("[data-dropzone]"))&&(window.Dropzone.autoDiscover=!1,e.isVariableDefined(e.select(".dropzone-default"))&&e.selectAll(".dropzone-default").forEach(e=>{var t=e.dataset.dropzone?JSON.parse(e.dataset.dropzone):{},t={...{url:"/upload",init:function(){this.on("error",function(e,t){e.accepted&&((e=(e=document.getElementsByClassName("dz-error"))[e.length-1]).classList.toggle("dz-error"),e.classList.toggle("dz-success"))})}},...t};new Dropzone(e,t)}),e.isVariableDefined(e.select(".dropzone-custom"))&&e.selectAll(".dropzone-custom").forEach(e=>{var t=e.dataset.dropzone?JSON.parse(e.dataset.dropzone):{},t={...{addRemoveLinks:!0,previewsContainer:e.querySelector(".dz-preview"),previewTemplate:e.querySelector(".dz-preview").innerHTML,url:"/upload",init:function(){this.on("error",function(e,t){e.accepted&&((e=(e=document.getElementsByClassName("dz-error"))[e.length-1]).classList.toggle("dz-error"),e.classList.toggle("dz-success"))})}},...t};e.querySelector(".dz-preview").innerHTML="",new Dropzone(e,t)}))},flatPicker:function(){var t=e.select(".flatpickr");e.isVariableDefined(t)&&e.selectAll(".flatpickr").forEach(function(e){var t="multiple"==e.getAttribute("data-mode")?"multiple":"range"==e.getAttribute("data-mode")?"range":"single",a="true"==e.getAttribute("data-enableTime"),o="true"==e.getAttribute("data-noCalendar"),i="true"==e.getAttribute("data-inline");flatpickr(e,{mode:t,enableTime:a,noCalendar:o,inline:i})})},avatarImg:function(){var o,t,i;e.isVariableDefined(e.select("#avatarUpload"))&&(o=e.select("#avatarUpload"),t=e.select("#avatar-reset-img"),i=e.select("#avatar-preview"),o.addEventListener("change",function(){const e=o.files[0],t=o.files,a=new FileReader;a.onloadend=function(){i.src=a.result},e&&t&&a.readAsDataURL(e);o.value=""},!0),t.addEventListener("click",function(){i.src="/assets/images/avatar/placeholder.jpg"}))},customScrollbar:function(){e.isVariableDefined(e.select(".custom-scrollbar"))&&document.addEventListener("DOMContentLoaded",function(){OverlayScrollbars(e.selectAll(".custom-scrollbar"),{resize:"none",scrollbars:{autoHide:"leave",autoHideDelay:200},overflowBehavior:{x:"visible-hidden",y:"scroll"}})}),e.isVariableDefined(e.select(".custom-scrollbar-y"))&&document.addEventListener("DOMContentLoaded",function(){OverlayScrollbars(e.selectAll(".custom-scrollbar-y"),{resize:"none",scrollbars:{autoHide:"leave",autoHideDelay:200},overflowBehavior:{x:"scroll",y:"scroll"}})})},toasts:function(){e.isVariableDefined(e.select(".toast-btn"))&&window.addEventListener("DOMContentLoaded",t=>{e.selectAll(".toast-btn").forEach(t=>{t.addEventListener("click",function(){var e=document.getElementById(t.dataset.target);new bootstrap.Toast(e).show()})})})},pswMeter:function(){e.isVariableDefined(e.select("#pswmeter"))&&passwordStrengthMeter({containerElement:"#pswmeter",passwordInput:"#psw-input",showMessage:!0,messageContainer:"#pswmeter-message",messagesList:["Write your password...","Easy peasy!","That is a simple one","That is better","Yeah! that password rocks ;)"],height:8,borderRadius:4,pswMinLength:8,colorScore1:"#dc3545",colorScore2:"#f7c32e",colorScore3:"#4f9ef8",colorScore4:"#0cbc87"})},fakePwd:function(){var t,a;e.isVariableDefined(e.select(".fakepassword"))&&(t=e.select(".fakepassword"),(a=e.select(".fakepasswordicon")).addEventListener("click",()=>{"password"==t.type?(t.setAttribute("type","text"),a.classList.add("fa-eye")):(a.classList.remove("fa-eye"),t.setAttribute("type","password"))}))}};e.init();});</script>
+  </head>
+  <body>
+    <header class="navbar-light fixed-top header-static bg-mode">
+
+        <!-- Logo Nav START -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- Logo START -->
+                <a class="navbar-brand" href="index.html">
+                    <img class="light-mode-item navbar-brand-item" src="https://social.webestica.com/assets/images/logo.svg" alt="logo">
+                    <img class="dark-mode-item navbar-brand-item" src="https://social.webestica.com/assets/images/logo.svg" alt="logo">
+                </a>
+                <!-- Logo END -->
+    
+          <!-- Responsive navbar toggler -->
+          <button class="navbar-toggler ms-auto icon-md btn btn-light p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-animation">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+    
+                <!-- Main navbar START -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+    
+            <!-- Nav Search START -->
+            <div class="nav mt-3 mt-lg-0 flex-nowrap align-items-center px-4 px-lg-0">
+              <div class="nav-item w-100">
+                <form class="rounded position-relative">
+                  <input class="form-control ps-5 bg-light" type="search" placeholder="Search..." aria-label="Search">
+                  <button class="btn bg-transparent px-2 py-0 position-absolute top-50 start-0 translate-middle-y" type="submit"><i class="bi bi-search fs-5"> </i></button>
+                </form>
+              </div>
+            </div>
+            <!-- Nav Search END -->
+    
+                    <ul class="navbar-nav navbar-nav-scroll ms-auto">
+                        <!-- Nav item 1 Demos -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" href="#" id="homeMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demo</a>
+                            <ul class="dropdown-menu" aria-labelledby="homeMenu">
+                                <li> <a class="dropdown-item active" href="index.html">Home default</a></li>
+                                <li> <a class="dropdown-item" href="index-classic.html">Home classic</a></li>
+                                <li> <a class="dropdown-item" href="index-post.html">Home post</a></li>
+                                <li> <a class="dropdown-item" href="index-video.html">Home video</a></li>
+                                <li> <a class="dropdown-item" href="index-event.html">Home event</a></li>
+                                <li> <a class="dropdown-item" href="landing.html">Landing page</a></li>
+                                <li> <a class="dropdown-item" href="app-download.html">App download</a></li>
+                  <li class="dropdown-divider"></li>
+                                <li> 
+                                    <a class="dropdown-item" href="https://themes.getbootstrap.com/store/webestica/" target="_blank">
+                                        <i class="text-success fa-fw bi bi-cloud-download-fill me-2"></i>Buy Social!
+                                    </a> 
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Nav item 2 Pages -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                            <ul class="dropdown-menu" aria-labelledby="pagesMenu">
+                                <li> <a class="dropdown-item" href="albums.html">Albums</a></li>
+                                <li> <a class="dropdown-item" href="celebration.html">Celebration</a></li>
+                  <li> <a class="dropdown-item" href="messaging.html">Messaging</a></li>
+                                <!-- Dropdown submenu -->
+                                <li class="dropdown-submenu dropend"> 
+                    <a class="dropdown-item dropdown-toggle" href="#!">Profile</a>
+                                    <ul class="dropdown-menu" data-bs-popper="none">
+                                        <li> <a class="dropdown-item" href="my-profile.html">Feed</a> </li>
+                                        <li> <a class="dropdown-item" href="my-profile-about.html">About</a> </li>
+                                        <li> <a class="dropdown-item" href="my-profile-connections.html">Connections</a> </li>
+                                        <li> <a class="dropdown-item" href="my-profile-media.html">Media</a> </li>
+                                        <li> <a class="dropdown-item" href="my-profile-videos.html">Videos</a> </li>
+                                        <li> <a class="dropdown-item" href="my-profile-events.html">Events</a> </li>
+                                        <li> <a class="dropdown-item" href="my-profile-activity.html">Activity</a> </li>
+                                    </ul>
+                                </li>
+                                <li> <a class="dropdown-item" href="events.html">Events</a></li>
+                                <li> <a class="dropdown-item" href="events-2.html">Events 2</a></li>
+                                <li> <a class="dropdown-item" href="event-details.html">Event details</a></li>
+                                <li> <a class="dropdown-item" href="event-details-2.html">Event details 2</a></li>
+                                <li> <a class="dropdown-item" href="groups.html">Groups</a></li>
+                                <li> <a class="dropdown-item" href="group-details.html">Group details</a></li>
+                                <li> <a class="dropdown-item" href="post-videos.html">Post videos</a></li>
+                                <li> <a class="dropdown-item" href="post-video-details.html">Post video details</a></li>
+                                <li> <a class="dropdown-item" href="post-details.html">Post details</a></li>
+                                <li> <a class="dropdown-item" href="video-details.html">Video details</a></li>
+                  <li> <a class="dropdown-item" href="blog.html">Blog</a></li>
+                                <li> <a class="dropdown-item" href="blog-details.html">Blog details</a></li>
+                  
+                                <!-- Dropdown submenu levels -->
+                                <li class="dropdown-divider"></li>
+                                <li class="dropdown-submenu dropend">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Dropdown levels</a>
+                                    <ul class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
+                                        <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+                                        <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+                                        <!-- dropdown submenu open left -->
+                                        <li class="dropdown-submenu dropstart">
+                                            <a class="dropdown-item dropdown-toggle" href="#">Dropdown (start)</a>
+                                            <ul class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
+                                                <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+                                                <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+                                            </ul>
+                                        </li>
+                                        <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+    
+                        <!-- Nav item 3 Post -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account </a>
+                            <ul class="dropdown-menu" aria-labelledby="postMenu">
+                  <li> <a class="dropdown-item" href="create-page.html">Create a page</a></li>
+                                <li> <a class="dropdown-item" href="settings.html">Settings</a> </li>
+                                <li> <a class="dropdown-item" href="notifications.html">Notifications</a> </li>
+                                <li> <a class="dropdown-item" href="help.html">Help center</a> </li>
+                                <li> <a class="dropdown-item" href="help-details.html">Help details</a> </li>
+                  <!-- dropdown submenu open left -->
+                  <li class="dropdown-submenu dropstart">
+                    <a class="dropdown-item dropdown-toggle" href="#">Authentication</a>
+                    <ul class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
+                      <li> <a class="dropdown-item" href="sign-in.html">Sign in</a> </li>
+                      <li> <a class="dropdown-item" href="sign-up.html">Sing up</a> </li>
+                      <li> <a class="dropdown-item" href="forgot-password.html">Forgot password</a> </li>
+                      <li class="dropdown-divider"></li>
+                      <li> <a class="dropdown-item" href="sign-in-advance.html">Sign in advance</a> </li>
+                      <li> <a class="dropdown-item" href="sign-up-advance.html">Sing up advance</a> </li>
+                      <li> <a class="dropdown-item" href="forgot-password-advance.html">Forgot password advance</a> </li>
+                    </ul>
+                  </li>
+                  <li> <a class="dropdown-item" href="error-404.html">Error 404</a> </li>
+                  <li> <a class="dropdown-item" href="offline.html">Offline</a> </li>
+                  <li> <a class="dropdown-item" href="privacy-and-terms.html">Privacy &amp; terms</a> </li>
+                            </ul>
+                        </li>
+    
+                        <!-- Nav item 4 Mega menu -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="my-profile-connections.html">My network</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Main navbar END -->
+    
+                <!-- Nav right START -->
+                <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
+                    <li class="nav-item ms-2">
+                        <a class="nav-link icon-md btn btn-light p-0" href="messaging.html">
+                            <i class="bi bi-chat-left-text-fill fs-6"> </i>
+                        </a>
+                    </li>
+            <li class="nav-item ms-2">
+                        <a class="nav-link icon-md btn btn-light p-0" href="settings.html">
+                            <i class="bi bi-gear-fill fs-6"> </i>
+                        </a>
+                    </li>
+            <li class="nav-item dropdown ms-2">
+                        <a class="nav-link icon-md btn btn-light p-0" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                <span class="badge-notif animation-blink"></span>
+                            <i class="bi bi-bell-fill fs-6"> </i>
+                        </a>
+              <div class="dropdown-menu dropdown-animation dropdown-menu-end dropdown-menu-size-md p-0 shadow-lg border-0" aria-labelledby="notifDropdown">
+                <div class="card">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="m-0">Notifications <span class="badge bg-danger bg-opacity-10 text-danger ms-2">4 new</span></h6>
+                    <a class="small" href="#">Clear all</a>
+                  </div>
+                  <div class="card-body p-0">
+                    <ul class="list-group list-group-flush list-unstyled p-2">
+                      <!-- Notif item -->
+                      <li>
+                        <div class="list-group-item list-group-item-action rounded badge-unread d-flex border-0 mb-1 p-3">
+                          <div class="avatar text-center d-none d-sm-inline-block">
+                            <img class="avatar-img rounded-circle" src="https://social.webestica.com/assets/images/avatar/01.jpg" alt="">
+                          </div>
+                          <div class="ms-sm-3">
+                            <div class=" d-flex">
+                            <p class="small mb-2"><b>Judy Nguyen</b> sent you a friend request.</p>
+                            <p class="small ms-3 text-nowrap">Just now</p>
+                          </div>
+                          <div class="d-flex">
+                            <button class="btn btn-sm py-1 btn-primary me-2">Accept </button>
+                            <button class="btn btn-sm py-1 btn-danger-soft">Delete </button>
+                          </div>
+                        </div>
+                      </div>
+                      </li>
+                      <!-- Notif item -->
+                      <li>
+                        <div class="list-group-item list-group-item-action rounded badge-unread d-flex border-0 mb-1 p-3 position-relative">
+                          <div class="avatar text-center d-none d-sm-inline-block">
+                            <img class="avatar-img rounded-circle" src="https://social.webestica.com/assets/images/avatar/02.jpg" alt="">
+                          </div>
+                          <div class="ms-sm-3 d-flex">
+                            <div>
+                              <p class="small mb-2">Wish <b>Amanda Reed</b> a happy birthday (Nov 12)</p>
+                              <button class="btn btn-sm btn-outline-light py-1 me-2">Say happy birthday 🎂</button>
+                            </div>
+                            <p class="small ms-3">2min</p>
+                          </div>
+                        </div>
+                      </li>
+                      <!-- Notif item -->
+                      <li>
+                        <a href="#" class="list-group-item list-group-item-action rounded d-flex border-0 mb-1 p-3">
+                          <div class="avatar text-center d-none d-sm-inline-block">
+                            <div class="avatar-img rounded-circle bg-success"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold">WB</span></div>
+                          </div>
+                          <div class="ms-sm-3">
+                            <div class="d-flex">
+                              <p class="small mb-2">Webestica has 15 like and 1 new activity</p>
+                              <p class="small ms-3">1hr</p>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                      <!-- Notif item -->
+                      <li>
+                        <a href="#" class="list-group-item list-group-item-action rounded d-flex border-0 p-3 mb-1">
+                          <div class="avatar text-center d-none d-sm-inline-block">
+                            <img class="avatar-img rounded-circle" src="https://social.webestica.com/assets/images/logo/12.svg" alt="">
+                          </div>
+                          <div class="ms-sm-3 d-flex">
+                            <p class="small mb-2"><b>Bootstrap in the news:</b> The search giant’s parent company, Alphabet, just joined an exclusive club of tech stocks.</p>
+                            <p class="small ms-3">4hr</p>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-footer text-center">
+                    <a href="#" class="btn btn-sm btn-primary-soft">See all incoming activity</a>
+                  </div>
+                </div>
+              </div>
+                    </li>
+            <!-- Notification dropdown END -->
+    
+            <li class="nav-item ms-2 dropdown">
+                        <a class="nav-link btn icon-md p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="avatar-img rounded-2" src="https://social.webestica.com/assets/images/avatar/07.jpg" alt="">
+                        </a>
+              <ul class="dropdown-menu dropdown-animation dropdown-menu-end pt-3 small me-md-n3" aria-labelledby="profileDropdown">
+                <!-- Profile info -->
+                <li class="px-3">
+                  <div class="d-flex align-items-center position-relative">
+                    <!-- Avatar -->
+                    <div class="avatar me-3">
+                      <img class="avatar-img rounded-circle" src="https://social.webestica.com/assets/images/avatar/07.jpg" alt="avatar">
+                    </div>
+                    <div>
+                      <a class="h6 stretched-link" href="#">Lori Ferguson</a>
+                      <p class="small m-0">Web Developer</p>
+                    </div>
+                  </div>
+                  <a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center" href="my-profile.html">View profile</a>
+                </li>
+                <!-- Links -->
+                <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear fa-fw me-2"></i>Settings &amp; Privacy</a></li>
+                <li> 
+                  <a class="dropdown-item" href="https://support.webestica.com/" target="_blank">
+                    <i class="fa-fw bi bi-life-preserver me-2"></i>Support
+                  </a> 
+                </li>
+                <li> 
+                  <a class="dropdown-item" href="docs/index.html" target="_blank">
+                    <i class="fa-fw bi bi-card-text me-2"></i>Documentation
+                  </a> 
+                </li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item bg-danger-soft-hover" href="sign-in-advance.html"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+                <li> <hr class="dropdown-divider"></li>
+                <!-- Dark mode switch START -->
+                <li>
+                  <div class="modeswitch-wrap" id="darkModeSwitch">
+                    <div class="modeswitch-item">
+                      <div class="modeswitch-icon"></div>
+                    </div>
+                    <span>Dark mode</span>
+                  </div>
+                </li> 
+                <!-- Dark mode switch END -->
+              </ul>
+                    </li>
+                  <!-- Profile START -->
+            
+                </ul>
+                <!-- Nav right END -->
+            </div>
+        </nav>
+        <!-- Logo Nav END -->
+    </header>
+    {{ block "main" . }}{{ end }}
+    {{ block "footer" . }}{{ end }}   
+  </body>
+</html>
