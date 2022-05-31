@@ -4,7 +4,7 @@
 <q-page padding>
   <h1 class="h5">The main</h1>
   <q-list  separator class="q-mb-lg">
-    {{ range first 15 ( where .Site.RegularPages "Type" "news" ) }}
+    {{ range first 15 ( where .Site.RegularPages.ByLastmod.Reverse "Type" "news" ) }}
     <q-item tag="a" clickable v-ripple href="{{.Permalink}}">
       <q-item-section>
         <h2 class="h6" style="margin-bottom: 0;">{{ .Title | title | markdownify}}</h2>
@@ -13,7 +13,7 @@
     </q-item>
     {{ end }}
   </q-list>
-  {{ range after 15 ( where .Site.RegularPages "Type" "news" ) }}
+  {{ range after 15 ( where .Site.RegularPages.ByLastmod.Reverse "Type" "news" ) }}
   <q-card flat bordered tag="article" class="q-mb-md" >
     <q-card-section horizontal>
       <q-card-section {{ if .Params.images}}class="full-width"{{end}}>
