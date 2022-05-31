@@ -1,4 +1,4 @@
-{{ define "title" }}{{ .Title | title }} &ndash; {{ .Site.Title }}{{ end }}
+{{ define "title" }}{{ .Title  | title | markdownify }} &ndash; {{ .Site.Title }}{{ end }}
 {{ define "head" }}{{- with $.Params.images }}<link rel="preload" as="image" href="https://i0.wp.com/cdn.rezzamula.com/i/{{ index . 0 }}?w=751">{{ end }}{{ end }}
 {{ define "main" }}
 <q-page padding>
@@ -10,8 +10,8 @@
         <figcaption class="q-layout-padding q-pt-none text-body2">{{$.Params.caption | markdownify}}</figcaption>
       </figure>
       {{ end -}}
-      <h1>{{.Title | title}}</h1>
-      <p>{{.Params.description}}</p>
+      <h1>{{.Title | title | markdownify}}</h1>
+      <p>{{.Params.description | markdownify}}</p>
       <q-card flat bordered class="q-mb-md">
         <q-item>
           <q-item-section>
@@ -21,7 +21,7 @@
         {{- with $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize .)) }}
         <q-chip :ripple="false">
           {{ if .Params.avatar }}<q-avatar>
-            <img src="https://i0.wp.com/cdn.rezzamula.com/i/{{ .Params.avatar }}">
+            <q-img no-spinner src="https://i0.wp.com/cdn.rezzamula.com/i/{{ .Params.avatar }}?w=56" alt="Avatar {{.Params.title | title}}"></q-img>
           </q-avatar>{{end}}
           <a href="{{ .Permalink }}">{{ .Params.title | title}}</a>
         </q-chip>
@@ -31,22 +31,22 @@
             <q-item-label class="q-gutter-xs">
               <q-btn round flat aria-label="share facebook" target="_blank" rel="noopener nofollow" href="https://www.facebook.com/sharer.php?u={{.Permalink}}">
                 <q-avatar size="42px">
-                  <img src="https://i0.wp.com/cdn.rezzamula.com/i/GuE5CKU.png?resize=42,42">
+                  <q-img no-spinner src="https://i0.wp.com/cdn.rezzamula.com/i/GuE5CKU.png?resize=42,42" alt="facebook icon"></q-img>
                 </q-avatar>
               </q-btn>
               <q-btn round flat aria-label="share twitter" target="_blank" rel="noopener nofollow" href="https://twitter.com/share?url={{.Permalink}}&text={{.Title|title}}">
                 <q-avatar size="42px">
-                  <img src="https://i0.wp.com/cdn.rezzamula.com/i/8iCfOjr.png?resize=42,42">
+                  <q-img no-spinner src="https://i0.wp.com/cdn.rezzamula.com/i/8iCfOjr.png?resize=42,42" alt="twitter icon"></q-img>
                 </q-avatar>
               </q-btn>
               <q-btn round flat aria-label="share linkedin" target="_blank" rel="noopener nofollow" href="https://www.linkedin.com/sharing/share-offsite/?url={{.Permalink}}">
                 <q-avatar size="42px">
-                  <img src="https://i0.wp.com/cdn.rezzamula.com/i/0NuLnmz.png?resize=42,42">
+                  <q-img no-spinner src="https://i0.wp.com/cdn.rezzamula.com/i/0NuLnmz.png?resize=42,42" alt="linkedin icon"></q-img>
                 </q-avatar>
               </q-btn>
               <q-btn round flat aria-label="share whatsapp" target="_blank" rel="noopener nofollow" href="https://api.whatsapp.com/send?text={{.Permalink}}">
                 <q-avatar size="42px">
-                  <img src="https://i0.wp.com/cdn.rezzamula.com/i/ktrKclr.png?resize=42,42">
+                  <q-img no-spinner src="https://i0.wp.com/cdn.rezzamula.com/i/ktrKclr.png?resize=42,42" alt="whatsapp icon"></q-img>
                 </q-avatar>
               </q-btn>
             </q-item-label>

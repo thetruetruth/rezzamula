@@ -1,9 +1,9 @@
-{{ define "title" }}Author: {{ .Title }} &ndash; {{ .Site.Title }}{{ end }}
+{{ define "title" }}Author: {{ .Title  | title | markdownify}} &ndash; {{ .Site.Title }}{{ end }}
 {{ define "main" }}
 <q-page padding>
   {{ range first 200 .Pages }}
   <q-item tag="a" clickable v-ripple href="{{.Permalink}}">
-    <q-item-section><h2 class="h6" style="margin-bottom: 0;">{{ .Title }}</h2></q-item-section>
+    <q-item-section><h2 class="h6" style="margin-bottom: 0;">{{ .Title  | title | markdownify}}</h2></q-item-section>
   </q-item>
   {{ end }}
 </q-page>

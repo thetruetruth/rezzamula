@@ -1,0 +1,17 @@
+<figure class="op-interactive row mx-n1 g-0 p-0">
+<div class="ratio ratio-16x9">
+<iframe data-src="https://www.youtube.com/embed/{{ .Get "id" }}?rel=0" class="lazyload no-margin" allowfullscreen>
+<noscript><iframe src="https://www.youtube.com/embed/{{ .Get "id" }}" allowfullscreen></iframe></noscript>
+</iframe>
+</div>
+{{ if or (or (.Get "title") (.Get "caption")) (.Get "attr") }}
+    <figcaption class="px-2">
+        {{ if or (.Get "caption") (.Get "attr") }}<p class="mt-1 mb-0 text-muted small">
+        {{ .Get "caption" }}
+        {{ with .Get "attrlink" }}<a href="{{ . }}"> {{ end }}
+            {{ .Get "attr" }}
+        {{ if .Get "attrlink" }}</a> {{ end }}
+    </p>{{ end }}
+    </figcaption>
+    {{ end }}
+</figure>

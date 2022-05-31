@@ -1,0 +1,17 @@
+<figure data-mode="aspect-fit" class="q-layout-no-padding q-my-lg">
+    {{ with .Get "link" }}<a href="{{ . }}">{{ end }}
+        <q-img no-spinner src="https://i0.wp.com/cdn.rezzamula.com/i/{{ .Get "src"}}?h=590" 
+        {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" }}{{ end }}"{{ end }}></q-img>
+    {{ if .Get "link" }}</a>{{ end }}
+    {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr") }}
+    <figcaption class="q-px-md text-caption">
+        {{ if or (.Get "caption") (.Get "attr") }}
+        <p class="q-mt-xs">
+        {{ .Get "caption" }}
+        {{ with .Get "attrlink" }}<a href="{{ . }}"> {{ end }}
+            {{ .Get "attr" }}
+        {{ if .Get "attrlink" }}</a> {{ end }}
+    </p>{{ end }}
+    </figcaption>
+    {{ end }}
+</figure>
