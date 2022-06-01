@@ -1,0 +1,28 @@
+{{ define "title" }}{{ .Title }} &ndash; {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<q-page padding>
+  <article class="article-main" style="word-wrap: break-word;">
+  {{ .Content }}
+  </article>
+</q-page>
+{{ end }}
+
+
+{{ define "sidebar"}}
+<q-drawer show-if-above v-model="rightDrawer" side="right">
+  <q-scroll-area class="fit">
+    {{ if and (gt .WordCount 400 ) }}
+    <q-list>
+      <q-expansion-item popup expand-separator icon="format_list_bulleted" label="Table of Content" default-opened header-class="text-weight-bolder">
+        <q-card>
+          <q-card-section class="q-pa-none">
+            {{.TableOfContents}}
+          </q-card-section>
+        </q-card>
+      </q-expansion-item>
+    </q-list>
+    {{ end }}
+  </q-scroll-area>
+</q-drawer>
+{{ end }}

@@ -2,7 +2,6 @@ baseURL = 'https://rezzamula.com/'
 languageCode = 'en-us'
 title = 'RezzaMula'
 disableHugoGeneratorInject = true
-disableKinds = ["taxonomyTerm"]
 enableRobotsTXT = true
 
 [markup]
@@ -12,3 +11,6 @@ enableRobotsTXT = true
 
 [taxonomies]
   author = "authors"
+  category = 'categories'
+  tag = 'tags'
+  story = 'stories'

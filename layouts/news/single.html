@@ -1,5 +1,45 @@
 {{ define "title" }}{{ .Title  | title }} &ndash; {{ .Site.Title }}{{ end }}
-{{ define "head" }}{{- with $.Params.images }}<link rel="preload" as="image" href="https://i0.wp.com/cdn.rezzamula.com/i/{{ index . 0 }}?w=751">{{ end }}{{ end }}
+{{ define "head" }}
+{{- with $.Params.images }}<link rel="preload" as="image" href="https://i0.wp.com/cdn.rezzamula.com/i/{{ index . 0 }}?w=751">{{ end }}
+{{- $iso8601 := "2006-01-02T15:04:05-07:00" -}}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rezzamula.com/news/"
+    },
+    "isFamilyFriendly": "true",
+    "headline": "{{.Title | title}}",
+    "genre" : [ {{ range $index, $tag := .Params.tags }}{{ if $index }}, {{ end }}"{{ $tag }}" {{ end }}],
+    "wordCount" : "{{ .WordCount }}",
+    "image": {{ if .Params.images }}[{{ range $i, $e := .Params.images }}{{ if $i }}, {{ end }}{{ $e | printf "https://cdn.rezzamula.com/i/%s" }}{{ end }}]{{ else}}{{.Site.Params.logo | absURL }}{{ end }},
+    "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05.00Z" | safeHTML }}",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05.00Z" | safeHTML }}",
+    "author": [
+    {{- range $index,$author := .Params.authors }}
+        {{- with $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize .)) -}}
+        {{- if $index }}, {{ end -}}
+    { 
+      "@type" : "Person",
+      "name":"{{.Params.title |title}}",
+      "url":"{{.Permalink}}" 
+    }
+        {{- end -}}
+    {{- end -}}
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "Rezzamula",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https:\/\/rezzamula.com\/icons\/amp.png"
+      }
+    }
+  }
+</script>
+{{ end }}
 {{ define "main" }}
 <q-page padding>
   <article class="text-body1" style="word-wrap: break-word;">
